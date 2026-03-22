@@ -1,0 +1,19 @@
+# Prebuilt image - copies a pre-compiled static binary into alpine
+# Usage: docker build --build-arg SERVICE=api-gateway -f Dockerfile.prebuilt -t edisimulator-api-gateway:latest .
+FROM alpine:latest
+
+RUN apk --no-cache add ca-certificates
+
+RUN addgroup -g 1000 app && \
+    adduser -D -u 1000 -G app app
+
+WORKDIR /app
+
+ARG SERVICE=api-gateway
+COPY .docker-bins/${SERVICE} /app/service
+
+RUN chmod +x /app/service
+
+USER app
+
+ENTRYPOINT ["/app/service"]

@@ -1,0 +1,46 @@
+# Binaries
+*.o
+*.a
+*.so
+*.out
+
+# Go build artifacts (root-level compiled binaries)
+api-gateway
+receiver
+sender
+simulator
+transformer
+worker
+llm-service
+.docker-bins/
+
+# Backup / temp files
+*~
+*.orig
+
+# Go build
+bin/
+dist/
+
+# Frontend build output
+frontend/dist/
+frontend/node_modules/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Environment
+.env
+.env.local
+
+# Logs
+*.log
+
+# Temporary
+tmp/
+temp/

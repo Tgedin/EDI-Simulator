@@ -1,0 +1,62 @@
+.sim-control {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.9rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.12);
+  color: white;
+}
+
+.sim-control:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.22);
+  border-color: rgba(255, 255, 255, 0.7);
+}
+
+.sim-control:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+/* Non-interactive offline state */
+.sim-control--offline {
+  cursor: default;
+  opacity: 0.55;
+}
+
+/* Status dot */
+.sim-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.sim-dot--running {
+  background: #4caf50;
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.8);
+  animation: pulse-green 2s infinite;
+}
+
+.sim-dot--paused {
+  background: #ff9800;
+  box-shadow: 0 0 5px rgba(255, 152, 0, 0.7);
+}
+
+.sim-dot--offline {
+  background: #999;
+}
+
+.sim-label {
+  white-space: nowrap;
+}
+
+@keyframes pulse-green {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.5; }
+}

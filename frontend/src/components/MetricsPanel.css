@@ -1,0 +1,281 @@
+/* ── Stats bar — full-width horizontal row ───────────────────────────────── */
+.stats-bar {
+  display: flex;
+  align-items: stretch;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  padding: 0.75rem 1rem;
+  background: var(--bg-card);
+  border-radius: 10px;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 1.25rem;
+}
+
+/* ── Individual stat card ────────────────────────────────────────────────── */
+.stat-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 80px;
+  padding: 0.55rem 1rem;
+  border-radius: 7px;
+  background: var(--bg-muted);
+  border-top: 3px solid var(--card-accent, var(--border-color));
+  transition: background 0.15s ease, transform 0.15s ease;
+  flex: 1;
+}
+
+.stat-card:hover {
+  background: var(--bg-hover);
+  transform: translateY(-1px);
+}
+
+.stat-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  white-space: nowrap;
+  margin-bottom: 0.2rem;
+}
+
+.stat-value {
+  font-size: 1.65rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1;
+}
+
+.stat-sub {
+  font-size: 0.68rem;
+  color: var(--text-hint);
+  margin-top: 0.2rem;
+}
+
+/* Alert state — red flash when failed > 0 */
+.stat-card--alert .stat-value {
+  color: #f44336;
+}
+
+/* Clickable card — cursor pointer + hover lift */
+.stat-card--clickable {
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Active filter state — bright accent border + tinted background */
+.stat-card--active {
+  background: color-mix(in srgb, var(--card-accent, #2196f3) 12%, var(--bg-muted));
+  border-top-width: 3px;
+  box-shadow: 0 0 0 1px var(--card-accent, #2196f3) inset;
+}
+
+.stat-card--active .stat-value {
+  color: var(--card-accent, #2196f3);
+}
+
+/* Health badge */
+.stat-card--health {
+  flex-direction: row;
+  gap: 0.5rem;
+  border-top-color: #4caf50;
+  min-width: auto;
+  padding: 0.55rem 1.1rem;
+}
+
+.stat-card--health .stat-label {
+  margin-bottom: 0;
+  color: #4caf50;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.stat-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #4caf50;
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.8);
+  flex-shrink: 0;
+  animation: stat-pulse 2s infinite;
+}
+
+/* Vertical divider between groups */
+.stats-divider {
+  width: 1px;
+  background: var(--border-color);
+  margin: 0.25rem 0.25rem;
+  align-self: stretch;
+  flex-shrink: 0;
+}
+
+@keyframes stat-pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
+}
+
+/* ── Analyze metrics button ──────────────────────────────────────────────── */
+.stat-analyze-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.45rem 0.9rem;
+  border-radius: 7px;
+  border: 1px solid #7c4dff;
+  background: color-mix(in srgb, #7c4dff 10%, var(--bg-muted));
+  color: #7c4dff;
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s, transform 0.1s;
+  letter-spacing: 0.03em;
+  align-self: center;
+}
+.stat-analyze-btn:hover {
+  background: color-mix(in srgb, #7c4dff 20%, var(--bg-muted));
+  transform: translateY(-1px);
+}
+
+/* ── Responsive: wrap into two rows on narrow screens ───────────────────── */
+@media (max-width: 900px) {
+  .stats-bar {
+    gap: 0.4rem;
+  }
+  .stats-divider {
+    display: none;
+  }
+  .stat-card {
+    min-width: 70px;
+    padding: 0.5rem 0.75rem;
+  }
+  .stat-value {
+    font-size: 1.3rem;
+  }
+}
+
+
+.metrics-header {
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.75rem;
+}
+
+.metrics-header h3 {
+  font-size: 1.1rem;
+  margin: 0;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.metric-card {
+  padding: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background: var(--bg-muted);
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.metric-card:hover {
+  border-color: var(--text-hint);
+  background: var(--bg-hover);
+}
+
+.card-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.5rem;
+}
+
+.card-value {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.card-secondary {
+  font-size: 0.75rem;
+  color: var(--text-hint);
+  margin-top: 0.25rem;
+}
+
+/* Status Cards */
+.metric-card.status-pending {
+  border-left: 4px solid #ff9800;
+  background: rgba(255, 152, 0, 0.08);
+}
+
+.metric-card.status-sent {
+  border-left: 4px solid #2196f3;
+  background: rgba(33, 150, 243, 0.08);
+}
+
+.metric-card.status-received {
+  border-left: 4px solid #4caf50;
+  background: rgba(76, 175, 80, 0.08);
+}
+
+.metric-card.status-transformed {
+  border-left: 4px solid #00bcd4;
+  background: rgba(0, 188, 212, 0.08);
+}
+
+.metric-card.status-failed {
+  border-left: 4px solid #f44336;
+  background: rgba(244, 67, 54, 0.08);
+}
+
+.metric-card.queue-info {
+  border-left: 4px solid #9c27b0;
+  background: rgba(156, 39, 176, 0.08);
+}
+
+/* Health Card */
+.metric-card.health {
+  grid-column: 1 / -1;
+  border-left: 4px solid #4caf50;
+  background: rgba(76, 175, 80, 0.08);
+}
+
+.card-status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+  color: #4caf50;
+  font-weight: 600;
+}
+
+.status-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+.status-dot.online {
+  background: #4caf50;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}

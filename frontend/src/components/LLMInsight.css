@@ -1,0 +1,207 @@
+/* ── LLM Insight widget ──────────────────────────────────────────────────── */
+.llm-insight {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  padding: 0.6rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  background: var(--bg-muted);
+  border-left: 3px solid var(--border-color);
+  margin-top: 0.5rem;
+}
+
+/* Loading ----------------------------------------------------------------- */
+.llm-insight--loading {
+  border-left-color: #9c27b0;
+  color: var(--text-muted);
+}
+
+.llm-spinner {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--border-color);
+  border-top-color: #9c27b0;
+  border-radius: 50%;
+  animation: llm-spin 0.7s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes llm-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Error ------------------------------------------------------------------- */
+.llm-insight--error {
+  border-left-color: #757575;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* classify_failure -------------------------------------------------------- */
+.llm-insight--classify {
+  border-left-color: #9c27b0;
+}
+
+.llm-badge {
+  display: inline-block;
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.llm-confidence {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+.llm-confidence[data-level="high"]   { color: #4caf50; }
+.llm-confidence[data-level="medium"] { color: #ff9800; }
+.llm-confidence[data-level="low"]    { color: #f44336; }
+
+.llm-explanation {
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+/* health_insight ---------------------------------------------------------- */
+.llm-insight--insight {
+  border-left-color: #4caf50;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.llm-text {
+  margin: 0;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+/* draft_communication ----------------------------------------------------- */
+.llm-insight--draft {
+  border-left-color: #2196f3;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.llm-draft {
+  margin: 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-family: inherit;
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+/* ── Floating insight panel below stats bar ────────────────────────────── */
+.stats-insight-float {
+  margin-top: -0.75rem;
+  margin-bottom: 1.25rem;
+  padding: 0.9rem 1rem;
+  background: var(--bg-card);
+  border-radius: 0 0 10px 10px;
+  box-shadow: var(--shadow-sm);
+  border-top: 2px solid #4caf50;
+}
+
+.stats-insight-float--metrics {
+  border-top-color: #7c4dff;
+}
+
+.stats-insight-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.stats-insight-title {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #4caf50;
+}
+
+.stats-insight-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  line-height: 1;
+  padding: 0;
+}
+.stats-insight-close:hover { color: var(--text-primary); }
+
+/* 💡 button inside stat card */
+.stat-insight-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.85rem;
+  padding: 0;
+  line-height: 1;
+  margin-top: 0.15rem;
+  opacity: 0.65;
+  transition: opacity 0.15s, transform 0.1s;
+}
+.stat-insight-btn:hover {
+  opacity: 1;
+  transform: scale(1.15);
+}
+
+/* ── AI analysis section inside MessageDetail ───────────────────────────── */
+.ai-section {
+  margin-top: 1.25rem;
+  padding: 1rem;
+  background: var(--bg-muted);
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+}
+
+.ai-section-title {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  margin: 0 0 0.75rem 0;
+}
+
+.ai-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.75rem;
+}
+
+.ai-btn {
+  padding: 0.4rem 0.9rem;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-card);
+  color: var(--text-primary);
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+}
+.ai-btn:hover {
+  background: var(--bg-hover);
+  transform: translateY(-1px);
+}
+
+.ai-btn--primary {
+  background: #9c27b0;
+  border-color: #9c27b0;
+  color: #fff;
+}
+.ai-btn--primary:hover { background: #7b1fa2; }

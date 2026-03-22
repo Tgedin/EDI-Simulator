@@ -1,0 +1,232 @@
+/* ── CSS Design Tokens ─────────────────────────────────────────────────────── */
+:root {
+  --bg-primary:    #f5f5f5;
+  --bg-secondary:  #ffffff;
+  --bg-card:       #ffffff;
+  --bg-muted:      #fafafa;
+  --bg-hover:      #f5f5f5;
+  --bg-input:      #ffffff;
+  --bg-code:       #f5f5f5;
+  --text-primary:  #222222;
+  --text-secondary:#333333;
+  --text-muted:    #666666;
+  --text-hint:     #999999;
+  --border-color:  #e0e0e0;
+  --border-muted:  #dddddd;
+  --accent:        #667eea;
+  --accent-hover:  #5568d3;
+  --header-from:   #667eea;
+  --header-to:     #764ba2;
+  --shadow-sm:     0 1px 3px rgba(0,0,0,0.10);
+  --shadow-md:     0 2px 8px rgba(0,0,0,0.10);
+}
+
+/* Dark palette — applied when OS prefers dark, or when user toggles */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-primary:    #0f1117;
+    --bg-secondary:  #1a1d27;
+    --bg-card:       #1e2130;
+    --bg-muted:      #252836;
+    --bg-hover:      #2a2d3e;
+    --bg-input:      #252836;
+    --bg-code:       #12141e;
+    --text-primary:  #e8eaf0;
+    --text-secondary:#c8cad5;
+    --text-muted:    #8b8fa8;
+    --text-hint:     #5c607a;
+    --border-color:  #2e3148;
+    --border-muted:  #353850;
+    --accent:        #7c8ff0;
+    --accent-hover:  #667eea;
+    --header-from:   #1a1d27;
+    --header-to:     #252836;
+    --shadow-sm:     0 1px 3px rgba(0,0,0,0.40);
+    --shadow-md:     0 2px 8px rgba(0,0,0,0.40);
+  }
+}
+
+/* Manual dark override via data-theme attribute (user toggle overrides OS) */
+[data-theme="dark"] {
+  --bg-primary:    #0f1117;
+  --bg-secondary:  #1a1d27;
+  --bg-card:       #1e2130;
+  --bg-muted:      #252836;
+  --bg-hover:      #2a2d3e;
+  --bg-input:      #252836;
+  --bg-code:       #12141e;
+  --text-primary:  #e8eaf0;
+  --text-secondary:#c8cad5;
+  --text-muted:    #8b8fa8;
+  --text-hint:     #5c607a;
+  --border-color:  #2e3148;
+  --border-muted:  #353850;
+  --accent:        #7c8ff0;
+  --accent-hover:  #667eea;
+  --header-from:   #1a1d27;
+  --header-to:     #252836;
+  --shadow-sm:     0 1px 3px rgba(0,0,0,0.40);
+  --shadow-md:     0 2px 8px rgba(0,0,0,0.40);
+}
+
+/* Manual light override — always light regardless of OS */
+[data-theme="light"] {
+  --bg-primary:    #f5f5f5;
+  --bg-secondary:  #ffffff;
+  --bg-card:       #ffffff;
+  --bg-muted:      #fafafa;
+  --bg-hover:      #f5f5f5;
+  --bg-input:      #ffffff;
+  --bg-code:       #f5f5f5;
+  --text-primary:  #222222;
+  --text-secondary:#333333;
+  --text-muted:    #666666;
+  --text-hint:     #999999;
+  --border-color:  #e0e0e0;
+  --border-muted:  #dddddd;
+  --accent:        #667eea;
+  --accent-hover:  #5568d3;
+  --header-from:   #667eea;
+  --header-to:     #764ba2;
+  --shadow-sm:     0 1px 3px rgba(0,0,0,0.10);
+  --shadow-md:     0 2px 8px rgba(0,0,0,0.10);
+}
+
+/* ── App shell ──────────────────────────────────────────────────────────────── */
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.app-header {
+  background: linear-gradient(135deg, var(--header-from) 0%, var(--header-to) 100%);
+  color: white;
+  padding: 1.25rem 2rem;
+  box-shadow: var(--shadow-md);
+}
+
+.app-header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.app-header h1 {
+  font-size: 1.6rem;
+  margin: 0;
+}
+
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.theme-toggle {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease;
+}
+
+.theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.app-nav {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.nav-button {
+  padding: 0.6rem 1.25rem;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.nav-button:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: white;
+}
+
+.nav-button.active {
+  background: rgba(255, 255, 255, 0.35);
+  border-color: white;
+  font-weight: 600;
+}
+
+.app-main {
+  flex: 1;
+  padding: 2rem;
+  max-width: 1600px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ── Dashboard Layout ───────────────────────────────────────────────────────── */
+.dashboard-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.error-banner {
+  background: rgba(204, 51, 51, 0.12);
+  color: #e05555;
+  padding: 1rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  border-left: 4px solid #c33;
+}
+
+.success-banner {
+  background: rgba(51, 204, 51, 0.12);
+  color: #2a9630;
+  padding: 1rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  border-left: 4px solid #2a9630;
+}
+
+/* ── Responsive ─────────────────────────────────────────────────────────────── */
+@media (max-width: 1200px) {
+  .dashboard-layout {
+    gap: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .app-main {
+    padding: 1rem;
+  }
+
+  .app-header {
+    padding: 1rem;
+  }
+
+  .app-header h1 {
+    font-size: 1.3rem;
+  }
+}
+

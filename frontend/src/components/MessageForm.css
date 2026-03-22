@@ -1,0 +1,142 @@
+.message-form-container {
+  background: var(--bg-card);
+  border-radius: 8px;
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  box-shadow: var(--shadow-md);
+}
+
+.message-form-container h2 {
+  margin-bottom: 2rem;
+  color: var(--text-secondary);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.form-group label {
+  font-weight: 600;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.form-group select,
+.form-group textarea {
+  padding: 0.75rem;
+  border: 1px solid var(--border-muted);
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  background: var(--bg-input);
+  color: var(--text-primary);
+  transition: border-color 0.3s ease;
+}
+
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.form-group select:disabled,
+.form-group textarea:disabled {
+  background: var(--bg-muted);
+  cursor: not-allowed;
+}
+
+.form-group textarea {
+  resize: vertical;
+  font-family: 'Courier New', monospace;
+}
+
+.label-with-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.load-sample-button {
+  padding: 0.5rem 1rem;
+  background: var(--bg-muted);
+  border: 1px solid var(--border-muted);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  transition: all 0.3s ease;
+}
+
+.load-sample-button:hover {
+  background: var(--bg-hover);
+  border-color: var(--text-hint);
+}
+
+.load-sample-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  margin-top: 1rem;
+}
+
+.submit-button,
+.cancel-button {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.submit-button {
+  background: var(--accent);
+  color: white;
+}
+
+.submit-button:hover:not(:disabled) {
+  background: var(--accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.submit-button:disabled {
+  background: var(--border-color);
+  cursor: not-allowed;
+}
+
+.cancel-button {
+  background: var(--bg-muted);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-muted);
+}
+
+.cancel-button:hover {
+  background: var(--bg-hover);
+  border-color: var(--text-hint);
+}
+
+.cancel-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

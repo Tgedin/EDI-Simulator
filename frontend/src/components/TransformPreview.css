@@ -1,0 +1,249 @@
+/* ─── Container ────────────────────────────────────────────────────────────── */
+.transform-preview {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 0;
+  padding: 1.5rem;
+  box-sizing: border-box;
+  background: var(--bg-primary);
+  min-height: 0;
+}
+
+/* ─── Toolbar (format selects + button) ────────────────────────────────────── */
+.transform-toolbar {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 8px 8px 0 0;
+  border-bottom: none;
+}
+
+.transform-route {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.75rem;
+}
+
+.format-select-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.format-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+}
+
+.format-select {
+  padding: 0.5rem 0.75rem;
+  border: 1.5px solid var(--border-muted);
+  border-radius: 6px;
+  font-size: 0.95rem;
+  background: var(--bg-input);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+  min-width: 120px;
+}
+
+.format-select:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.format-select:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.route-arrow {
+  font-size: 1.4rem;
+  color: var(--text-hint);
+  padding-bottom: 0.3rem;
+  user-select: none;
+}
+
+.transform-btn {
+  padding: 0.6rem 1.6rem;
+  background: #4a90e2;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, opacity 0.2s ease;
+  white-space: nowrap;
+}
+
+.transform-btn:hover:not(:disabled) {
+  background: #357abd;
+}
+
+.transform-btn:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.transform-btn.loading {
+  background: #7aad2e;
+}
+
+/* ─── Error banner ──────────────────────────────────────────────────────────── */
+.transform-error {
+  background: rgba(192, 57, 43, 0.10);
+  color: #e05555;
+  border: 1px solid rgba(231, 76, 60, 0.35);
+  padding: 0.6rem 1rem;
+  font-size: 0.9rem;
+  border-left: 4px solid #e74c3c;
+}
+
+/* ─── Three-panel grid ──────────────────────────────────────────────────────── */
+.transform-panels {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0;
+  flex: 1;
+  min-height: 0;
+  border: 1px solid var(--border-color);
+  border-top: none;
+  border-bottom: none;
+  background: var(--border-color);
+}
+
+.transform-panel {
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-card);
+  min-height: 0;
+}
+
+.transform-panel + .transform-panel {
+  border-left: 1px solid var(--border-color);
+}
+
+/* ─── Panel header ──────────────────────────────────────────────────────────── */
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 0.9rem;
+  background: var(--bg-muted);
+  border-bottom: 1px solid var(--border-color);
+  flex-shrink: 0;
+}
+
+.panel-title {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+}
+
+.panel-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.panel-badge--source  { background: #e6f3d6; color: #3a7d1e; }
+.panel-badge--canonical { background: #ddeeff; color: #1a5a9e; }
+.panel-badge--target  { background: #fde9cc; color: #a85800; }
+
+/* ─── Panel textarea ────────────────────────────────────────────────────────── */
+.panel-textarea {
+  flex: 1;
+  resize: none;
+  border: none;
+  padding: 0.85rem 1rem;
+  font-family: 'SF Mono', 'Fira Code', 'Consolas', 'Menlo', monospace;
+  font-size: 0.8rem;
+  line-height: 1.55;
+  color: var(--text-primary);
+  min-height: 350px;
+  box-sizing: border-box;
+  outline: none;
+  background: var(--bg-card);
+}
+
+.panel-textarea--editable {
+  background: var(--bg-input);
+}
+
+.panel-textarea--editable:focus {
+  box-shadow: inset 0 0 0 2px var(--accent);
+}
+
+.panel-textarea--readonly {
+  background: var(--bg-muted);
+  color: var(--text-secondary);
+  cursor: text;
+}
+
+/* ─── Footer status bar ─────────────────────────────────────────────────────── */
+.transform-footer {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.55rem 1rem;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-top: 1px solid #e0e0e0;
+  border-radius: 0 0 8px 8px;
+  font-size: 0.82rem;
+  color: #666;
+  flex-shrink: 0;
+}
+
+.footer-fields {
+  font-weight: 700;
+  color: #4a90e2;
+}
+
+.footer-sep {
+  color: #ccc;
+}
+
+.footer-mapping {
+  font-weight: 600;
+  color: #555;
+}
+
+.footer-idle {
+  color: #aaa;
+  font-style: italic;
+}
+
+/* ─── Responsive: stack panels on narrow screens ────────────────────────────── */
+@media (max-width: 900px) {
+  .transform-panels {
+    grid-template-columns: 1fr;
+  }
+
+  .transform-panel + .transform-panel {
+    border-left: none;
+    border-top: 1px solid #e0e0e0;
+  }
+
+  .panel-textarea {
+    min-height: 180px;
+  }
+
+  .transform-route {
+    flex-wrap: wrap;
+  }
+}
