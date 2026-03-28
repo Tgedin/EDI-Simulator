@@ -66,3 +66,12 @@ docker compose down
 | API       | http://localhost:8080  |
 | Grafana   | http://localhost:3001  |
 | RabbitMQ  | http://localhost:15672 |
+
+## PDF Export
+
+Every message detail view includes **Preview PDF** and **Download PDF** actions. PDFs are generated entirely in the browser (no server round-trip) using the canonical form already produced by the transformer service:
+
+- **Transformed messages** — structured layout: header band, PO number / date / currency strip, buyer and seller party boxes, line-items table with per-line totals and grand total, transmission details.
+- **Untransformed messages** — clean info block + labelled raw EDI fallback.
+
+Files are named `edi-<id>-<timestamp>.pdf` and download instantly.
